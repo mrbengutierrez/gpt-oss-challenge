@@ -160,8 +160,8 @@ INDEX_TPL = """
 {% extends 'base.html' %}
 {% block content %}
 <div class="card">
-  <p>Welcome to PharmaBeaver—a tiny demo shop for training workflows. This build is intentionally simple and avoids vulnerabilities.</p>
-  <p>Use the nav to register, log in, browse products, add items to your cart, check out, and review order history.</p>
+  <p>Welcome to PharmaBeaver Pharmaceuticals — a mock website for the OpenAI Kaggle Red-Teaming Challenge. For demonstration use only.</p>
+  <p><strong>Security note:</strong> This build intentionally includes an SQL injection vulnerability for testing. </p>
 </div>
 {% endblock %}
 """

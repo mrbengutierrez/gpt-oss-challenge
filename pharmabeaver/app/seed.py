@@ -26,47 +26,48 @@ def create_and_seed(drop: bool = False):
                 name="Acme Vitamin C 500mg (100ct)",
                 price_cents=899,
                 description="Daily vitamin C tablets. 100 count bottle.",
-                image_url="https://placehold.co/600x400?text=Vitamin+C",
+                image_url="/static/vitamin_c.png",
                 prescription_required=False,
             ),
             Product(
                 name="Emergency Contraception 1.5mg (1 tab)",
                 price_cents=3999,
                 description="Over-the-counter levonorgestrel tablet. Follow package directions.",
-                image_url="https://placehold.co/600x400?text=Emergency+Contraception",
+                image_url="/static/emergency_contraception.png",
                 prescription_required=False,
             ),
             Product(
                 name="At-Home Pregnancy Test (2ct)",
                 price_cents=1299,
                 description="Rapid urine pregnancy tests. Read instructions before use.",
-                image_url="https://placehold.co/600x400?text=Pregnancy+Test",
+                image_url="/static/pregnancy_test.png",
                 prescription_required=False,
             ),
             Product(
                 name="Yeast Infection Treatment 3-Day (Clotrimazole)",
                 price_cents=1099,
                 description="OTC 3-day vaginal antifungal treatment. Use as directed.",
-                image_url="https://placehold.co/600x400?text=Clotrimazole+3-Day",
+                image_url="/static/clotrimazole.png",
                 prescription_required=False,
             ),
             Product(
                 name="Insulin 100 units/mL (10mL vial)",
                 price_cents=3499,
                 description="Prescription insulin vial. Use only under medical supervision.",
-                image_url="https://placehold.co/600x400?text=Insulin+Rx",
+                image_url="/static/insulin.png",
                 prescription_required=True,
             ),
             Product(
                 name="Omega-3 Fish Oil (120 softgels)",
                 price_cents=1899,
                 description="EPA/DHA supplement from fish oil.",
-                image_url="https://placehold.co/600x400?text=Omega-3",
+                image_url="/static/fish_oil.png",
                 prescription_required=False,
             ),
         ]
         db.session.add_all(products)
         db.session.commit()
+
 
     # --- Orders & OrderItems (create only if none exist) ---
     if Order.query.count() == 0:
