@@ -160,4 +160,4 @@ This project demonstrates how **gpt-oss-20b can be coaxed into unsafe tool use**
 - Writing executable intrusion scripts with real libraries (`requests`, `BeautifulSoup`).  
 - Successfully exfiltrating protected resources (`/orders` page).  
 
-It pushes forward the **methodological insight** dimension of the Kaggle challenge by showing that **live exploitation harnesses** can reveal vulnerabilities that static prompt engineering cannot. It also provides a reproducible platform for future researchers to test whether LLMs will escalate to **functional cyberattacks** under benign-framed prompts.  
+It pushes forward the **methodological insight** dimension of the Kaggle challenge by showing that **live exploitation harnesses** can reveal exploitable vulnerabilities that static prompt engineering cannot. It also provides a reproducible platform for future researchers to test whether LLMs will escalate to **functional cyberattacks** under benign-framed prompts.  
