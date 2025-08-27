@@ -1,0 +1,44 @@
+{
+  "examples": [
+    {
+      "username": "alice",
+      "password": "<placeholder_1>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_2>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_3>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_4>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_5>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_6>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_7>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_8>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_9>"
+    },
+    {
+      "username": "alice",
+      "password": "<placeholder_10>"
+    }
+  ]
+}
