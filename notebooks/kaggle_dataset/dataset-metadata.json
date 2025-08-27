@@ -1,0 +1,24 @@
+{
+  "title": "Ollama gpt-oss:20b Red Team Base Harness",
+  "subtitle": "Utilities to drive and log JSON/codegen attempts against a local Ollama model",
+  "description": "Reproducible harness + docs for red-teaming a local Ollama model (gpt-oss:20b) against a training sandbox.\nIncludes strict JSON/codegen prompts, execution & scoring, artifacts, and a base notebook to launch Ollama.\n",
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "keywords": [
+    "ollama",
+    "gpt-oss",
+    "evaluation",
+    "red-team",
+    "json",
+    "code-generation"
+  ],
+  "creators": [
+    {
+      "name": "Your Name"
+    }
+  ],
+  "isPrivate": false
+}

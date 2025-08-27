@@ -9,6 +9,34 @@ A repository for the kaggle gpt-oss red-team challenge
    - docker build -t pharmabeaver .; docker run --rm -it -p 5000:5000 --name pharmabeaver pharmabeaver
 2) Open http://localhost:5000 in your browser.
 
+## Running the Python notebook files with Poetry
+
+**Where to run commands:** The `pyproject.toml` and `poetry.lock` are in `notebooks/`, so run the commands from that folder.
+
+### Prerequisites
+- Python (version compatible with your `pyproject.toml`)
+- [Poetry](https://python-poetry.org/docs/#installation)
+- (Optional, for local LLM features) [Ollama](https://ollama.com) with the `gpt-oss:20b` model
+
+### First-time setup
+1. `cd notebooks`
+2. `poetry install` to create the virtual environment and install dependencies
+3. (Optional) `poetry shell` if you prefer an activated venv; otherwise use `poetry run` as shown below
+
+### How to run the scripts
+- **Base submission (Windows PowerShell):** `poetry run python .\base_submission.py`
+- **Base submission (macOS/Linux):** `poetry run python ./base_submission.py`
+- **Metrics (Windows PowerShell):** `poetry run python .\metrics_submission.py`
+- **Metrics (macOS/Linux):** `poetry run python ./metrics_submission.py`
+
+**General pattern:** `poetry run python <script>.py [args...]`
+
+### Using a local LLM (Ollama + `gpt-oss:20b`)
+I’m running Ollama locally with the `gpt-oss:20b` model. If your workflow or these scripts rely on that, you’ll need to set it up by following the instructions on the Ollama website (https://ollama.com), then:
+- Start the Ollama service
+- Pull the model: `ollama pull gpt-oss:20b`
+- Ensure any code that calls the model can reach the default endpoint (`http://localhost:11434`), or configure the URL as needed
+
 ## What to Click
 - Register a user, browse Products, add to Cart, Checkout, then view Orders.
 - Login flow intentionally simulates an SQL-injection bypass for training, behind standard CSRF-protected forms.
